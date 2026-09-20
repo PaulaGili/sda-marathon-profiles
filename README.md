@@ -10,6 +10,12 @@ The final data story, including the complete narrative and all visualizations, i
 
 This is the main deliverable. The other notebooks document the supporting data preparation, profiling and modelling work.
 
+The same story is also published as an interactive web app, where the charts respond to the reader:
+
+➡️ **Live app:** _add the share.streamlit.io link here once deployed_
+
+The app is a companion, not a replacement — the notebook remains the full write-up.
+
 ## Research question
 
 Can distinct runner profiles be identified based on training behaviour, physical condition, recovery and psychological preparation, and how do these profiles differ in marathon performance?
@@ -45,13 +51,16 @@ All observations and results describe a **simulated population**, not real marat
 - `notebooks/08_sections_1_2.ipynb` — opening story sections
 - `notebooks/09_section_5.ipynb` — synthetic-data credibility section
 - `notebooks/10_four_runners_full_story.ipynb` — **final complete story**
+- `streamlit_app.py` — the interactive version of the final story
+- `requirements.txt`, `.streamlit/config.toml` — app dependencies and theme
 
 ## Reproducing the final notebook
 
-The analysis uses Python with the following main packages:
+The analysis uses Python with the following main packages (`seaborn >= 0.13` and
+`matplotlib >= 3.6` are required):
 
 ```bash
-pip install numpy pandas matplotlib scipy scikit-learn jupyter
+pip install numpy pandas matplotlib seaborn scipy scikit-learn jupyter
 ```
 
 Clone or download the repository, start Jupyter from the repository root, open `notebooks/10_four_runners_full_story.ipynb`, and run:
@@ -59,6 +68,30 @@ Clone or download the repository, start Jupyter from the repository root, open `
 `Kernel → Restart & Run All`
 
 The notebook expects `data/clean.csv` and `data/profiles.csv` to remain in the repository's `data/` directory.
+
+## Running the interactive app
+
+From the repository root:
+
+```bash
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+The app reads the same `data/clean.csv` and `data/profiles.csv` and refits the same models, so its
+numbers and the notebook's always agree. The first load takes around 20 seconds while the
+Section 5 models are fitted; after that everything is cached.
+
+### Deploying it
+
+The app is deployed on [Streamlit Community Cloud](https://share.streamlit.io):
+
+1. Sign in with the GitHub account that has access to this repository.
+2. **Create app** → pick `PaulaGili/sda-marathon-profiles`, branch `main`, main file `streamlit_app.py`.
+3. Choose a subdomain, deploy, and paste the resulting link into **Start here** above.
+
+Free-tier apps sleep after a period of inactivity, so the first visitor after a quiet spell waits
+roughly half a minute for the app to wake and refit its models.
 
 ## Team
 
