@@ -12,7 +12,7 @@ This is the main deliverable. The other notebooks document the supporting data p
 
 The same story is also published as an interactive web app, where the charts respond to the reader:
 
-➡️ **Live app:** _add the share.streamlit.io link here once deployed_
+➡️ **Live app:** [https://sda-marathon-profiles-p3angtmevmrbminnenlgrt.streamlit.app/]
 
 The app is a companion, not a replacement — the notebook remains the full write-up.
 
