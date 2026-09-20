@@ -209,6 +209,11 @@ with st.sidebar:
 
 st.title("Four Runners")
 st.markdown("#### A story built from 80,000 simulated runners")
+st.markdown(
+    "This story asks two questions. First: what separates a fast runner from a slow one in this "
+    "dataset? Second: can this dataset answer that at all? Sections 1 to 4 answer the first. "
+    "Section 5 answers the second, and changes what the first four mean."
+)
 
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("Simulated runners", f"{len(df):,}")
@@ -305,11 +310,12 @@ note("Training details only, no race results. 6,000-runner sample.")
 with st.expander("Why this map is drawn from these twelve columns"):
     st.markdown(
         """
-It uses the same twelve training columns the profiles were built from in `03`, so it is a fair
-picture of the space they were drawn in. That list holds two near-mirror pairs —
-`rest_days_per_week` is exactly `min(7 - runs_per_week, 3)`, and VO₂ max tracks resting heart rate
-at r = −0.75 — which gives training frequency and aerobic capacity double weight on these axes.
-`03` tested dropping them; the overlap survives either way.
+The map is drawn from the same twelve training measurements the profiles themselves were built
+from, so it shows the groups in the space they were actually created in. Two of those twelve are
+near-duplicates of two others — rest days are simply the flip side of runs per week, and aerobic
+capacity closely tracks resting heart rate — which quietly gives training frequency and fitness
+extra weight on these axes. Our profiling notebook tested removing them, and the overlap looks the
+same either way.
 """
     )
 
@@ -324,8 +330,8 @@ gap = new["finish_minutes"] - vet["finish_minutes"]
 st.markdown(
     f"""
 The gap between the two ends of the profile continuum is large. Newcomers finish in about
-**{new['finish_minutes']:.0f} minutes**, Veterans in about **{vet['finish_minutes']:.0f}** — a
-difference of **{gap:.0f} minutes**.
+**{new['finish_minutes']:.0f} minutes** (just over five hours), Veterans in about
+**{vet['finish_minutes']:.0f}** (four hours and ten) — a difference of **{gap:.0f} minutes**.
 
 That gap isn't just a side effect of how the groups were built. Finish time and drop-out were
 never used to create the profiles — runners were grouped purely by how they trained, and only
@@ -474,7 +480,7 @@ passes.**
 """
 )
 
-with st.expander("A pattern psychology recognises — Ariella Kaeslin"):
+with st.expander("A pattern psychology recognises (section by Ariella Kaeslin)"):
     st.markdown(
         """
 The shape of this curve — steep at the beginning, flattening out later — is not unique to running.
@@ -733,7 +739,7 @@ st.markdown(
 That one sentence explains everything that seemed odd. Most of what we measured didn't matter
 because it was never part of the formula. The four profiles don't behave differently from each
 other because there's no teamwork between factors for a formula like this to produce. No model
-gets much closer than it already does — about 18 minutes of *average* error in `05`, against the
+gets much closer than it already does — about 18 minutes of *average* error in our modelling notebook, against the
 {ev['resid'].std():.0f}-minute spread above — because roughly {ev['resid'].std():.0f} minutes of
 every runner's time comes straight from a random number generator. And nobody beats their own
 target by much, because the target was built from the result instead of set before the race.

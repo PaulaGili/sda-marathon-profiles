@@ -2,6 +2,8 @@
 
 Sport Data Analytics project based on the **Run Club Marathon Performance Dataset**, a synthetic dataset containing 80,000 simulated runners.
 
+*What separates a fast marathon runner from a slow one — and can a synthetic dataset tell us?*
+
 ## Start here
 
 The final data story, including the complete narrative and all visualizations, is available in:
@@ -12,13 +14,21 @@ This is the main deliverable. The other notebooks document the supporting data p
 
 The same story is also published as an interactive web app, where the charts respond to the reader:
 
-➡️ **Live app:** [https://sda-marathon-profiles-p3angtmevmrbminnenlgrt.streamlit.app/]
+➡️ **Live app:** [Four Runners — the interactive story](https://sda-marathon-profiles-p3angtmevmrbminnenlgrt.streamlit.app/)
 
 The app is a companion, not a replacement — the notebook remains the full write-up.
 
-## Research question
+## Research questions
 
-Can distinct runner profiles be identified based on training behaviour, physical condition, recovery and psychological preparation, and how do these profiles differ in marathon performance?
+**1. Can distinct runner profiles be identified** based on training behaviour, physical condition, recovery and psychological preparation, and how do these profiles differ in marathon performance?
+
+**2. Can this dataset support those conclusions at all?**
+
+The project answers the first question in full: four profiles emerge, the extremes finish 51 minutes apart, and the payoff from experience is steep early and flattens later.
+
+It then answers the second question with a no — and that turn is the main finding. The dataset is a formula, not a record of running: finish time is mostly experience, plus a handful of small adjustments, plus about 21 minutes of pure randomness. Most of what the file measures has no bearing on the result, and weekly mileage — one of the strongest predictors in real marathon research — barely matters here.
+
+Both answers matter. The shapes the dataset produces are realistic; the relationships inside it are not.
 
 ## Story overview
 
@@ -29,7 +39,9 @@ The final notebook introduces four descriptive runner profiles:
 - **Naturals**
 - **Veterans**
 
-It then compares their finish times and drop-out rates, examines the relationship between experience and performance, explores other factors associated with finish time, and investigates how the synthetic dataset appears to have been generated.
+It then compares their finish times and drop-out rates, examines the relationship between experience and performance, and explores other factors associated with finish time.
+
+Section 5 turns the analysis on the dataset itself and works out how the file was generated. This is the payoff of the story, and it reframes everything before it: Sections 1 to 4 describe the file accurately, but the file turns out to be describing itself rather than marathon running.
 
 The profiles should be understood as regions along a continuum rather than four naturally separated kinds of runner.
 
